@@ -28,6 +28,8 @@ class Category(models.Model):
         return self.name
 
     class Meta:
+        # order by id
+        ordering = ('id',)
         verbose_name_plural = 'Categories'
 
 

@@ -5,13 +5,13 @@
 <div class="container-fluid">
     <div class="d-flex flex-column flex-lg-row justify-content-between align-items-center">
         <div class="d-flex flex-column">
-        <h3 class="fw-bold text-center pb-lg-5 align-self-start">Žiauriausi grybai Klaipėdoje</h3>
-        <p class="fw-bold text-center pb-lg-5 align-self-start">East Asian mushrooms and fungi are often used in East Asian cuisine, either fresh or dried. According to Chinese traditional medicine, many types of mushroom affect the eater's physical and emotional wellbeing.</p>
+        <h3 class="fw-bold text-center pb-lg-5 align-self-center">Žiauriausi grybai Klaipėdoje</h3>
+        <p class="fw-bold text-center pb-lg-5 align-self-center">East Asian mushrooms and fungi are often used in East Asian cuisine, either fresh or dried. According to Chinese traditional medicine, many types of mushroom affect the eater's physical and emotional wellbeing.</p>
         </div>
-        <img class="img-fluid" src="{% static 'images/home_page_mushroom.jpg' %}" width="400">
+        <img class="img-fluid front-img" src="{% static 'images/home_page_mushroom.jpg' %}">
     </div>
     <div class="d-flex justify-content-center">
-        <a type="button" href="#" class="btn btn-primary px-5 me-md-2 fw-bold">Apsipirkti</a>
+        <a type="button" href="{% url 'store:all_categories' %}" class="btn btn-primary px-5 me-md-2 fw-bold">Apsipirkti</a>
     </div>
 </div>
 {% endblock %}
