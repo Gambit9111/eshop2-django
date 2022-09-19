@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb px-4 pt-1">
+      <li class="breadcrumb-item"><a href="{% url 'store:all_categories' %}">Kategorijos</a></li>
+      <li class="breadcrumb-item"><a href="{% url 'store:products_by_category' product.category.slug %}">Grybai</a></li>
+      <li class="breadcrumb-item active" aria-current="page">Pasirinkti</li>
+    </ol>
+</nav>
+
+<div class="container grow">
+    {% comment %} product detail page with a large image on the right side and information on the left, column on mobile {% endcomment %}
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card border-0">
+                <div class="card-body">
+                    <hr>
+                    <h4 class="card-title">{{ product.name }}</h4>
+                    <p class="card-text">{{ product.description }}</p>
+                    <hr>
+                    <form method="POST" action="{% url 'store:product_detail' product.category.slug product.slug %}">
+                    <div class="d-flex flex-row justify-content-evenly">
+                        <p class="card-text align-self-start pt-4">Kaina: <span class="h5">{{ product.price }}</span> €</p>
+                        <div class="form-group">
+                            <label for="quantity" class="form-label mt-4">Kiekis:</label>
+                            <input type="number" id="quantity" name="quantity" min="1" max="5" value="1">
+                        </div>
+                    </div>
+                        <div class="d-flex justify-content-center py-lg-5 py-3">
+                            {% csrf_token %}
+                            <input class="btn btn-outline-primary px-5" type="submit" value="Į krepšelį">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <img src="{{product.image.url}}" class="img-fluid product-img" alt="{{ product.name }}">
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -52,3 +52,10 @@
     object-fit: cover;
     object-position: center;
   }
+
+  .product-img {
+    width: 80vh;
+    height: 50vh;
+    object-fit: cover;
+    object-position: center;
+  }

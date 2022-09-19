@@ -4,18 +4,19 @@
 {% block content %}
 <nav aria-label="breadcrumb">
     <ol class="breadcrumb px-3 pt-1">
-      <li class="breadcrumb-item active" aria-current="page">Kategorijos</li>
+        <li class="breadcrumb-item"><a href="{% url 'store:all_categories' %}">Kategorijos</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Grybai</li>
     </ol>
 </nav>
 
 <div class="container text-center grow">
     <div class="row row-cols-1 row-cols-md-3 g-3 ">
-        {% for category in categories %}
+        {% for product in products %}
         <div class="col">
             <div class="card border-0">
-                <a href="{{category.get_absolute_url}}"><img src="{{category.image.url}}" alt="jusciogrybai" class="card-img-top img-fluid shadow cover-img"></a>
+                <a href="{{product.get_absolute_url}}"><img src="{{product.image.url}}" alt="jusciogrybai" class="card-img-top img-fluid shadow cover-img"></a>
                 <div class="card-body">
-                    <h5 class="card-title">{{category.name}}</h5>
+                    <h5 class="card-title">{{product.name}}</h5>
                 </div>
             </div>
         </div>
