@@ -59,3 +59,7 @@
     object-fit: cover;
     object-position: center;
   }
+
+  .navbar-color-change {
+    background-color: #fff;
+  }

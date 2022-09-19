@@ -16,10 +16,10 @@
         <div class="col-md-6">
             <div class="card border-0">
                 <div class="card-body">
-                    <hr>
+                    <hr style="border-top: 3px solid black">
                     <h4 class="card-title">{{ product.name }}</h4>
                     <p class="card-text">{{ product.description }}</p>
-                    <hr>
+                    <hr style="border-top: 3px solid black">
                     <form method="POST" action="{% url 'store:product_detail' product.category.slug product.slug %}">
                     <div class="d-flex flex-row justify-content-evenly">
                         <p class="card-text align-self-start pt-4">Kaina: <span class="h5">{{ product.price }}</span> €</p>

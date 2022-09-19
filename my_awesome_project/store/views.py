@@ -21,4 +21,6 @@ def product_detail(request, slug_cat, slug_prod):
     return render(request, "store/product_detail.html", {"product": product})
 
 def cart_view(request):
-    return render(request, "store/cart.html")
+    products = Product.get_all_products_by_category_slug("kitos-prekes")
+    return render(request, "store/cart.html", {"products": products})
+
