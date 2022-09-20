@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block content %}
-  <div class="container">
+  <div class="container grow">
     {% for product in products %}
     <div class="container">
         <div class="list-group w-auto d-flex flex-row">
@@ -23,11 +23,9 @@
         <hr style="border-top: 3px solid black">
     </div>
     {% endfor %}
-    <div class="container d-flex justify-content-center">
-      <a href="/" class="d-flex justify-content-between text-dark text-decoration-none btn btn-outline-secondary">
-        <h5 class="m-auto">Suma: 138€ </h5>
-        <img src="{% static 'images/logos/ok-hand.svg' %}" alt="jusciogrybai" class="ms-3" width="48" height="48">
-      </a>
+    <div class="container d-flex justify-content-center pt-3">
+      <a href="{% url 'store:checkout' %}" class="btn btn-outline-primary w-100">Suma: 138€ </a>
+      <img src="{% static 'images/logos/ok-hand.svg' %}" alt="jusciogrybai" class="ms-3" width="48" height="48">
     </div>
   </div>
 {% endblock %}

@@ -24,3 +24,11 @@ def cart_view(request):
     products = Product.get_all_products_by_category_slug("kitos-prekes")
     return render(request, "store/cart.html", {"products": products})
 
+def checkout(request):
+    return render(request, "store/checkout.html")
+
+def payment(request):
+    products = Product.get_all_products_by_category_slug("kitos-prekes")
+    return render(request, "store/payment.html", {"products": products})
+
+    
