@@ -95,11 +95,35 @@ def order_item_delete_endpoint(request, slug_cat, slug_prod, str):
     else:
         return redirect('store:all_categories')
 
-def checkout(request):
+
+def checkout(request, uuid):
+    order = Order.objects.get(uuid=uuid)
+    
+    if request.method == "POST":
+        data = request.POST
+        print(data)
+
+        order.name = (data['firstName'] + " " + data['lastName'])
+        order.email = data['email']
+        order.phone = data['phoneNumber']
+        order.address = (data['address1'] + " " + data['address2'])
+        order.city = data['city']
+        order.completed = True
+
+        order.save()
+
+        return redirect('store:payment', uuid=uuid)
+
     return render(request, "store/checkout.html")
 
-def payment(request):
-    products = Product.get_all_products_by_category_slug("kitos-prekes")
-    return render(request, "store/payment.html", {"products": products})
+def payment(request, uuid):
+    order = Order.objects.get(uuid=uuid)
+
+    if request.method == "POST":
+        order.paid = True
+        order.save()
+        return redirect('store:all_categories')
+
+    return render(request, "store/payment.html", {"order": order})
 
     

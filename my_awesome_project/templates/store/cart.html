@@ -24,8 +24,8 @@
     </div>
     {% endfor %}
     <div class="container d-flex justify-content-center pt-3">
-      <a href="#" class="btn btn-outline-primary w-100">Suma: {{nav_order.get_cart_total}}€ </a>
+      <a href="{% url 'store:checkout' nav_order.uuid %}" class="btn btn-outline-primary w-100">Suma: {{nav_order.get_cart_total}}€ </a>
       <img src="{% static 'images/logos/ok-hand.svg' %}" alt="jusciogrybai" class="ms-3" width="48" height="48">
-    </div>
+    </div>  
   </div>
 {% endblock %}

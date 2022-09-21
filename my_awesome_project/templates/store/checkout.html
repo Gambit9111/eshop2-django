@@ -6,43 +6,45 @@
     <div class="text-center">
         <h3>Jūsų užsakymas</h3>
     </div>
-  
+
+    <form method="POST" action="">
+      {% csrf_token %}
     <div class="pt-3">
         <div class="row g-2">
             <div class="col-sm-6">
               <label for="firstName" class="form-label">Vardas</label>
-              <input name="firstName" type="text" class="form-control" id="firstName" placeholder="Tomas">
+              <input name="firstName" type="text" class="form-control" id="firstName" placeholder="Tomas" required="required">
             </div>
 
             <div class="col-sm-6">
               <label for="lastName" class="form-label">Pavarde</label>
-              <input name="lastName" type="text" class="form-control" id="lastName" placeholder="Mol">
+              <input name="lastName" type="text" class="form-control" id="lastName" placeholder="Mol" required="required">
             </div>
 
 
             <div class="col-12">
               <label for="email" class="form-label">Elektroninis paštas</label>
-              <input name="email" type="email" class="form-control" id="email" placeholder="vardenas@pvz.com">
+              <input name="email" type="email" class="form-control" id="email" placeholder="vardenas@pvz.com" required="required">
             </div>
 
             <div class="col-sm-6">
               <label for="address" class="form-label">Gatvė ir namo numeris</label>
-              <input name="address1" type="text" class="form-control" id="address" placeholder="Molo gatvė 3" r>
+              <input name="address1" type="text" class="form-control" id="address" placeholder="Molo gatvė 3" required="required">
             </div>
 
             <div class="col-sm-6">
               <label for="address2" class="form-label">Buto numeris</label>
-              <input name="address2" type="text" class="form-control" id="address2" placeholder="Nr. 74">
+              <input name="address2" type="text" class="form-control" id="address2" placeholder="Nr. 74" required="required">
             </div>
 
             <div class="col-sm-6">
               <label for="country" class="form-label">Miestas</label>
-              <input name="city" type="text" class="form-control" id="address2" placeholder="Klaipėda">
+              <input name="city" type="text" class="form-control" id="address2" placeholder="Klaipėda" required="required">
             </div>
 
             <div class="col-sm-6">
               <label for="city" class="form-label">Numeris</label>
-              <input name="phoneNumber" type="text" class="form-control" id="city" placeholder="860123123">
+              <input name="phoneNumber" type="text" class="form-control" id="city" placeholder="860123123" required="required">
             </div>
         </div>
 
@@ -50,7 +52,7 @@
 
         <div class="my-3 ms-2">
             <div class="form-check">
-              <input id="credit" name="paymentMethod" type="radio" class="form-check-input" checked required>
+              <input id="credit" name="paymentMethod" type="radio" class="form-check-input" checked required="required">
               <label class="form-check-label" for="credit">Bankinis pavedimas</label>
             </div>
             <div class="form-check disabled">
@@ -67,9 +69,9 @@
             </div>
         </div>
         <div class="container d-flex justify-content-center pt-3">
-            <a href="{% url 'store:payment' %}" class="btn btn-outline-primary w-100">Patvirtinti</a>
+            <input class="btn btn-outline-primary w-100" type="submit" value="Patvirtinti"></input>
             <img src="{% static 'images/logos/ok-hand.svg' %}" alt="jusciogrybai" class="ms-3" width="48" height="48">
-        </div>
+        </div> 
     </div>
 </div>
 {% endblock %}
