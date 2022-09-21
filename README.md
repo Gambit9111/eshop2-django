@@ -2,8 +2,4 @@
 
 Desktop UI preview
 
-![Project](gifs/desktop-ui.gif)
-
-Mobile UI preview
-
-![Project](gifs/mobile-ui.gif)
+![Project](gifs/3-cart.gif)
