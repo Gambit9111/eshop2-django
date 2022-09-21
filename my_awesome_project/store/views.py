@@ -84,13 +84,14 @@ def order_item_delete_endpoint(request, slug_cat, slug_prod, str):
     if str == "cart":
 
         if order.items.first() == None:
-            return redirect('store:product_detail', slug_cat=slug_cat, slug_prod=slug_prod)
+            return redirect('store:all_categories')
         else:
             return redirect('store:cart_view')
 
     elif str == "product":
         return redirect('store:product_detail', slug_cat=slug_cat, slug_prod=slug_prod)
     
+    # if the string is not cart or product something is fishy so just return to categories
     else:
         return redirect('store:all_categories')
 
