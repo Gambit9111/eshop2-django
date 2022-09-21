@@ -96,7 +96,7 @@ class Order(models.Model):
     shipping_address = models.ForeignKey(ShippingDetails, on_delete=models.SET_NULL, related_name='shipping_details', blank=True, null=True)
     
     def __str__(self):
-        return "device: " + str(self.device) + "uuid: " + str(self.uuid) + "date_ordered: " + str(self.date_ordered) + "completed: " + str(self.complete) + "paid: " + str(self.paid) + "delivered: " + str(self.delivered)
+        return "device: " + str(self.device) + "uuid: " + str(self.uuid) + "date_ordered: " + str(self.date_ordered) + "completed: " + str(self.completed) + "paid: " + str(self.paid) + "delivered: " + str(self.delivered)
     
     @property
     def get_cart_total(self):
@@ -111,8 +111,8 @@ class Order(models.Model):
         return total
 
 class OrderItem(models.Model):
-    product = models.ForeignKey(Product, on_delete=models.CASCADE, editable=False)
-    order = models.ForeignKey(Order, related_name='items', on_delete=models.CASCADE, editable=False)
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    order = models.ForeignKey(Order, related_name='items', on_delete=models.CASCADE)
     quantity = models.PositiveIntegerField(default=1)
     date_added = models.DateTimeField(auto_now_add=True)
 
@@ -120,7 +120,7 @@ class OrderItem(models.Model):
     def get_total(self):
         total = float(self.product.price) * int(self.quantity)
         return total
-
+    
     def __str__(self):
         return str(self.product.name) + " - " + str(self.order.uuid) + " - " + str(self.quantity) + " - " + str(self.get_total)
     

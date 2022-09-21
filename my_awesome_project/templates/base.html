@@ -45,13 +45,16 @@
         <img src="{% static 'images/logos/mushrooms.png' %}" alt="jusciogrybai" class="" width="48" height="48">
       </a>
 
-      <div class="col-xxl-3 text-end">
-        <a href="{% url 'store:cart_view' %}" class="d-flex align-items-center px-5 text-dark text-decoration-none">
-          <img src="{% static 'images/logos/shopping-cart.png' %}" alt="jusciogrybai" class="" width="48" height="48">
-          <span class="fs-3 p-2">15€ 20X</span>
-          <img src="{% static 'images/logos/mushrooms.png' %}" alt="jusciogrybai" class="" width="32" height="32">
-        </a>
-      </div>
+      {% if nav_order.items.first is None %}
+      {% else %}
+        <div class="col-xxl-3 text-end">
+          <a href="{% url 'store:cart_view' %}" class="d-flex align-items-center px-5 text-dark text-decoration-none">
+            <img src="{% static 'images/logos/shopping-cart.png' %}" alt="jusciogrybai" class="" width="48" height="48">
+            <span class="fs-3 p-2">{{nav_order.get_cart_total}}€ {{nav_order.get_cart_items}}X</span>
+            <img src="{% static 'images/logos/mushrooms.png' %}" alt="jusciogrybai" class="" width="32" height="32">
+          </a>
+        </div>
+      {% endif %}
     </header>
   </div>
 
