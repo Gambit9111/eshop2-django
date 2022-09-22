@@ -1,10 +1,24 @@
 from django.contrib import admin
-import django.apps
+from .models import Category, Product, Order, OrderItem
 
-models = django.apps.apps.get_models()
+@admin.register(Category)
+class CategoryAdmin(admin.ModelAdmin):
+    list_display = ('name', 'image')
 
-for model in models:
-    try:
-        admin.site.register(model)
-    except admin.sites.AlreadyRegistered:
-        pass
+@admin.register(Product)
+class ProductAdmin(admin.ModelAdmin):
+    list_display = ('name', 'price', 'category', 'active')
+
+@admin.register(Order)
+class OrderAdmin(admin.ModelAdmin):
+    list_display = ('uuid' ,'device', 'completed', 'paid', 'delivered', 'date_ordered', 'get_cart_total')
+    list_filter = (
+        ('items', admin.RelatedOnlyFieldListFilter),
+    )
+@admin.register(OrderItem)
+# display order items filtered by order
+class OrderItemAdmin(admin.ModelAdmin):
+    list_display = ('order' ,'product', 'quantity', 'get_total', 'date_added')
+    list_filter = (
+        ('order', admin.RelatedOnlyFieldListFilter),
+    )

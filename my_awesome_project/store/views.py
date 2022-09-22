@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from .models import Category, Product, Order, OrderItem
 from django.http import Http404
 from django.views.decorators.http import require_http_methods
+from django.contrib.auth.decorators import login_required
 
 
 # categories view
@@ -125,5 +126,3 @@ def payment(request, uuid):
         return redirect('store:all_categories')
 
     return render(request, "store/payment.html", {"order": order})
-
-    

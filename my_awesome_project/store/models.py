@@ -85,7 +85,8 @@ class Order(models.Model):
     uuid = models.UUIDField(default=uuid.uuid4, editable=False)
     
     def __str__(self):
-        return "device: " + str(self.device) + "uuid: " + str(self.uuid) + "date_ordered: " + str(self.date_ordered) + "completed: " + str(self.completed) + "paid: " + str(self.paid) + "delivered: " + str(self.delivered)
+        return str(self.uuid)
+
     
     @property
     def get_cart_total(self):
